@@ -7,9 +7,13 @@ import (
 )
 
 func main() {
-	var m Map = Map{}
+	var (
+		m         Map    = Map{}
+		mapName   string = "testMap"
+		roomCount int8   = 7
+	)
 
-	m.Init("testMap", 2)
+	m.Init(mapName, roomCount)
 	m.GenerateRooms()
 	m.GenerateMapField()
 	m.LinkRooms()
