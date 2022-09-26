@@ -2,7 +2,7 @@ package main
 
 import "math/rand"
 
-const letterBytes = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+const letterBytes = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
 
 // https://stackoverflow.com/a/31832326
 func RandStringBytes(n int) string {

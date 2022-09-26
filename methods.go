@@ -56,38 +56,45 @@ func (m *Map) GenerateMapField() {
 }
 
 func (m *Map) LinkRooms() {
+	directions := []string{"north", "south", "west", "east"}
+
 	// random number -- room index -- nope, start from the first room name
 	for _, room := range m.RoomNames {
-
-		directions := []string{"north", "south", "west", "east"}
+		var i int
 
 		// random [0 <= n < 4] rooms to assign
-		roomCount := rand.Intn(4)
+		linkCount := rand.Intn(4)
 
-		// random direction
-		direction := directions[roomCount]
+		// loop over links, assign new links to the room
+		for i = 0; i < linkCount; i++ {
 
-		// https://stackoverflow.com/a/69006398
-		// First we get a "copy" of the entry
-		if entry, ok := m.Rooms[room]; ok {
+			// random direction
+			direction := directions[i]
 
-			// Then we modify the copy
-			switch direction {
-			case "north":
-				entry.North = room
-			case "south":
-				entry.South = room
-			case "west":
-				entry.West = room
-			case "east":
-				entry.East = room
+			// assign random room from rooms count number
+			roomCount := int(m.MapMeta.RoomCount)
+			randomRoomIdx := rand.Intn(roomCount)
+			randomRoom := m.RoomNames[randomRoomIdx]
+
+			// https://stackoverflow.com/a/69006398
+			// First we get a "copy" of the entry
+			if entry, ok := m.Rooms[room]; ok {
+
+				// Then we modify the copy
+				switch direction {
+				case "north":
+					entry.North = randomRoom
+				case "south":
+					entry.South = randomRoom
+				case "west":
+					entry.West = randomRoom
+				case "east":
+					entry.East = randomRoom
+				}
+
+				// Then we reassign map entry
+				m.Rooms[room] = entry
 			}
-			//entry.North = room
-
-			// Then we reassign map entry
-			m.Rooms[room] = entry
 		}
-
-		// assign/link them to such room (northbound, southbound etc)
 	}
 }

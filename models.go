@@ -38,5 +38,7 @@ type Room struct {
 type Effect struct {
 	Type         string `json:"type"`
 	RequiredItem string `json:"required-item"`
+	ObjectTarget string `json:"object"`
 	ShowHidden   bool   `json:"show-hidden"`
+	DamageHP     []int  `json:"damage-hp"`
 }
