@@ -5,14 +5,17 @@ import (
 	"math/rand"
 )
 
-func (m *Map) Init(name string, roomCount int8) {
+// Init method assigns map name and room count to MapMeta field.
+func (m *Map) Init(name string, roomCount int) {
 	m.MapMeta.Name = name
-	m.MapMeta.RoomCount = roomCount
+	m.MapMeta.RoomCount = int8(roomCount)
 
 	// Generate only 2D square maps!
 	m.MapMeta.Dimensions = 2
 }
 
+// GenerateRooms creates room names from string randomizer. Generated rooms are stored
+// in Map.Rooms and Map.RoomNames.
 func (m *Map) GenerateRooms() {
 	var (
 		j           int8

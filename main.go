@@ -8,12 +8,13 @@ import (
 
 func main() {
 	var (
-		m         Map    = Map{}
-		mapName   string = "testMap"
-		roomCount int8   = 12
+		m Map = Map{}
 	)
 
-	m.Init(mapName, roomCount)
+	// load and parse app flags
+	parseFlags()
+
+	m.Init(*MapName, *RoomCount)
 	m.GenerateRooms()
 	//m.GenerateMapField()
 	m.LinkRooms()
