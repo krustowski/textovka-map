@@ -21,7 +21,7 @@ func main() {
 
 	// next: AddObjects, AddItems, AddActions, AddEffects
 
-	// Marshal Map struct into intented JSON.
+	// Marshal Map struct into indented JSON.
 	jsonData, err := json.MarshalIndent(m, "", "  ")
 	if err != nil {
 		log.Println(err)
