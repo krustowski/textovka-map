@@ -20,24 +20,37 @@ func (m *Map) Init(name string, roomCount int) {
 func (m *Map) GenerateRooms() {
 	var (
 		j           int8
+		startRoom   string
+		endRoom     string
 		roomNameLen int = 8
 		roomNames       = []string{}
 	)
 
+	// Generate n strings.
 	for j = 0; j < int8(m.MapMeta.RoomCount); j++ {
 		name := RandStringBytes(roomNameLen)
 		roomNames = append(roomNames, name)
 	}
 
-	// Init rooms map.
+	// Initialize rooms map.
 	rooms := make(map[string]Room)
 
 	// Iterate over room names, allocate rooms.
-	for _, room := range roomNames {
-		rooms[room] = Room{}
+	for _, roomName := range roomNames {
+		// Assign startRoom to the first string.
+		if startRoom == "" {
+			startRoom = roomName
+		}
+
+		rooms[roomName] = Room{}
+
+		// Assign endRoom to last room (loop overriding).
+		endRoom = roomName
 	}
 
 	// Assign room names and rooms themselves to the map.
+	m.StartRoom = startRoom
+	m.EndRoom = endRoom
 	m.Rooms = rooms
 	m.RoomNames = roomNames
 }
