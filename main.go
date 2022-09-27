@@ -18,6 +18,7 @@ func main() {
 	m.GenerateRooms()
 	//m.GenerateMapField()
 	m.LinkRooms()
+	//m.AddStartEndRooms()
 
 	// next: AddObjects, AddItems, AddActions, AddEffects
 

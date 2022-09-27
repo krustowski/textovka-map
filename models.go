@@ -9,7 +9,6 @@ type Map struct {
 	RoomNames []string `json:"rooms"`
 
 	// Map of rooms.
-	//Rooms interface{} `json:"room"`
 	Rooms map[string]Room `json:"room"`
 }
 
@@ -20,6 +19,7 @@ type MapMeta struct {
 }
 
 type Room struct {
+	// Shown descriptior of such room (e.g. Dark room with a mysterious locked door to west).
 	Description string   `json:"description"`
 	North       string   `json:"north"`
 	South       string   `json:"south"`
@@ -28,11 +28,11 @@ type Room struct {
 	Items       []string `json:"items"`
 	Objects     []string `json:"objects"`
 
-	// List of effects.
+	// List of actions -- linked to their effects.
 	Actions []string `json:"actions"`
 
-	// Map of effects.
-	Effects interface{} `json:"effects"`
+	// Map of actions' effects.
+	Effects map[string]Effect `json:"effects"`
 }
 
 type Effect struct {

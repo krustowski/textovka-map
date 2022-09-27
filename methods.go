@@ -3,6 +3,7 @@ package main
 import (
 	"math"
 	"math/rand"
+	"time"
 )
 
 // Init method assigns map name and room count to MapMeta field.
@@ -66,13 +67,14 @@ func (m *Map) LinkRooms() {
 		var i int
 
 		// random [0 <= n < 4] rooms to assign
+		rand.Seed(time.Now().UnixNano())
 		linkCount := rand.Intn(4)
 
 		// loop over links, assign new links to the room
 		for i = 0; i < linkCount; i++ {
 
 			// random direction
-			direction := directions[i]
+			direction := directions[rand.Intn(4)]
 
 			// assign random room from rooms count number
 			roomCount := int(m.MapMeta.RoomCount)
