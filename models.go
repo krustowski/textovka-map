@@ -55,12 +55,24 @@ type Room struct {
 
 	// Map of actions' effects.
 	Effects map[string]Effect `json:"effects"`
+
+	// Hidden part of the room containing anything, overrides the whole room when effect launched.
+	Hidden Room `json:"hidden" default:null`
 }
 
 type Effect struct {
-	Type         string `json:"type"`
+	// Type of effect --- pick, dismiss, fill, fight (not yet implemented).
+	Type string `json:"type"`
+
+	// Item essential to perform such effect (e.g. bucket with water).
 	RequiredItem string `json:"required-item"`
+
+	// Object affected by the effect (e.g. fire is quenched).
 	ObjectTarget string `json:"object"`
-	ShowHidden   bool   `json:"show-hidden"`
-	DamageHP     []int  `json:"damage-hp"`
+
+	// If true, hidden part of such room overrides the actual room settings.
+	ShowHidden bool `json:"show-hidden"`
+
+	// Damage range (e.g. [0, 10]) caused by such effect.
+	DamageHP []int `json:"damage-hp"`
 }
