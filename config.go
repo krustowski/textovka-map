@@ -3,13 +3,13 @@ package main
 import "flag"
 
 var (
-	MapName   *string
-	RoomCount *int
+	flagMapName   *string
+	flagRoomCount *int
 )
 
 func parseFlags() {
-	MapName = flag.String("mapName", "testMap", "a string, name of the new map")
-	RoomCount = flag.Int("roomCount", 10, "an int, number of rooms to be generated")
+	flagMapName = flag.String("mapName", "testMap", "a string, name of the new map")
+	flagRoomCount = flag.Int("roomCount", 10, "an int, number of rooms to be generated")
 
 	flag.Parse()
 }

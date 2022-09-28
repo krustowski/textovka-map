@@ -7,14 +7,13 @@ import (
 )
 
 func main() {
-	var (
-		m Map = Map{}
-	)
+	var m Map = Map{}
 
 	// load and parse app flags
 	parseFlags()
 
-	m.Init(*MapName, *RoomCount)
+	// map generation procedure
+	m.Init(*flagMapName, *flagRoomCount)
 	m.GenerateRooms()
 	//m.GenerateMapField()
 	m.LinkRooms()
