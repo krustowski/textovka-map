@@ -57,7 +57,7 @@ type Room struct {
 	Effects map[string]Effect `json:"effects"`
 
 	// Hidden part of the room containing anything, overrides the whole room when effect launched.
-	Hidden Room `json:"hidden" default:null`
+	Hidden interface{} `json:"hidden" default:"nil"`
 }
 
 type Effect struct {
